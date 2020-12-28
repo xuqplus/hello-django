@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<button id="b">Click here</button>
+<hr>
+Response:
+<div id="d">-</div>
+<script>
+    document.getElementById('b').addEventListener('click', function () {
+        const t = Math.round(Math.random() * 1000)
+        const url = '/query0/'
+        const url0 = t > 500 ? url : url + '?q=' + t
+        fetch(url0).then(resp => {
+            if (200 == resp.status) {
+                resp.text().then(t => {
+                    document.getElementById('d').innerHTML = t
+                })
+            }
+        })
+    })
+</script>
+</body>
+</html>
